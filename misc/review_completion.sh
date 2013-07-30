@@ -43,7 +43,7 @@ __list()
 _review()
 {
     local i c=1 command __git_dir
-    opts="create rm list show apply"
+    opts="create rm list show apply download"
 
     while [ $c -lt $COMP_CWORD ]; do
         command="${COMP_WORDS[c]}"
@@ -63,6 +63,7 @@ _review()
     rm)         __list ;;
     show)       __list ;;
     apply)      __list ;;
+    download)   __list ;;
     *) COMPREPLY=() ;;
     esac
 }
