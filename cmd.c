@@ -98,5 +98,16 @@ void show(int n, char **args)
 
 void apply(int n, char **args)
 {
-    printf("Apply\n");
+    char *cmd, *path;
+
+    if (!n) {
+        printf("Usage: review apply <name>\n");
+        exit(1);
+    }
+    path = full_path(args[2]);
+    cmd = (char *) malloc(strlen(path) + 32);
+    sprintf(cmd, "patch -p1 < %s", path);
+    system(cmd);
+    free(path);
+    free(cmd);
 }
