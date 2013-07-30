@@ -34,6 +34,7 @@ void rm(int n, char **args);
 void list(int n, char **args);
 void show(int n, char **args);
 void apply(int n, char **args);
+void download(int n, char **args);
 
 
 /*

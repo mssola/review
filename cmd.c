@@ -111,3 +111,24 @@ void apply(int n, char **args)
     free(path);
     free(cmd);
 }
+
+void download(int n, char **args)
+{
+    char *cmd, *path;
+
+    if (n < 2) {
+        printf("Usage: review download <name> <url>\n");
+        exit(1);
+    }
+    path = full_path(args[2]);
+    if (!ends_with(path, ".patch")) {
+        path = (char *) realloc(path, strlen(path) + 6);
+        sprintf(path, "%s.patch", path);
+    }
+
+    cmd = (char *) malloc(strlen(path) + strlen(args[3]) + 32);
+    sprintf(cmd, "wget %s -O %s", args[3], path);
+    system(cmd);
+    free(path);
+    free(cmd);
+}

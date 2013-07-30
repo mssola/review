@@ -35,8 +35,8 @@ int parse(int argc, char *argv[])
 {
     int i;
     struct opts_t options[] = {
-        { "apply", &apply }, { "create", &create }, { "list", &list },
-        { "rm", &rm }, { "show", &show },
+        { "apply", &apply }, { "create", &create }, { "download", &download },
+        { "list", &list }, { "rm", &rm }, { "show", &show },
     };
 
     for (i = 0; i < 5; i++) {
@@ -67,6 +67,7 @@ void help()
     printf("   list\t\tList all the available patches.\n");
     printf("   show\t\tShow a patch.\n");
     printf("   apply\tApply a patch to a path.\n");
+    printf("   download\tDownload a patch and save it with the other patches.\n");
     exit(0);
 }
 
