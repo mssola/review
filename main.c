@@ -20,7 +20,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "cmd.h"
+#include "review.h"
 
 
 #define MAJOR 0

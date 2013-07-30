@@ -18,7 +18,7 @@
 
 
 #include <string.h>
-#include "cmd.h"
+#include "review.h"
 
 
 int ends_with(const char *str, const char *suffix)

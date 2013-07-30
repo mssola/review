@@ -21,7 +21,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <dirent.h>
-#include "cmd.h"
+#include "review.h"
 
 
 char *path;

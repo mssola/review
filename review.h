@@ -17,9 +17,13 @@
  */
 
 
-#ifndef CMD_H_
-#define CMD_H_
+#ifndef REVIEW_H_
+#define REVIEW_H_
 
+
+/*
+ * cmd.c
+ */
 
 void init();
 void fade();
@@ -30,7 +34,12 @@ void list(char **args);
 void show(char **args);
 void apply(char **args);
 
+
+/*
+ * utils.c
+ */
+
 int ends_with(const char *str, const char *suffix);
 
 
-#endif /* CMD_H_ */
+#endif /* REVIEW_H_ */
