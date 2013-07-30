@@ -16,6 +16,9 @@ review: $(OBJ)
 .c.o:
 	$(Q_CC) $(CC) -o $@ -c $(CFLAGS) $<
 
+install: review
+	@(cp $(EXEC) /usr/bin)
+
 clean:
 	@(rm -rf $(OBJ) $(EXEC))
 
