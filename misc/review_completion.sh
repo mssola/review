@@ -1,5 +1,8 @@
 #
-# This file is part of Review.
+# This file is part of Review. This file is based on the work done in the
+# git completion file. This file is available in here:
+# https://git.kernel.org/cgit/git/git.git/tree/contrib/completion/git-completion.bash
+#
 # Copyright (C) 2013 Miquel Sabaté Solà <mikisabate@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
@@ -17,6 +20,7 @@
 #
 
 
+# Do the completion work. Shamelessly taken from the git completion script.
 __revcomp()
 {
     local all c s=$'\n' IFS=' '$'\t'$'\n'
@@ -34,12 +38,14 @@ __revcomp()
     return
 }
 
+# Complete by listing the patch files inside the directory of patches.
 __list()
 {
     opts=`ls $HOME/.patches | grep ".patch$"`
     __revcomp "${opts}"
 }
 
+# Main function for the completion of the review command.
 _review()
 {
     local i c=1 command __git_dir
