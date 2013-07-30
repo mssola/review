@@ -1,10 +1,9 @@
 # Review
 
 This is a little utility that is meant to keep some order on your patches.
-It happens to me that I have quite a few patch files and I want them to be
-kept in some central directory. This directory gets placed in $HOME/.patches.
-This utility is meant to deal with this directory by performing the following
-operations:
+I keep all my patches inside the $HOME/.patches directory and then I use
+this utility to work with them. In order to do this, this application allows
+the user to perform the following operations:
 
 ## Create
 
