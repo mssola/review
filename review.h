@@ -29,8 +29,6 @@ char *path;
  */
 
 void init();
-void fade();
-
 void create(int n, char **args);
 void rm(int n, char **args);
 void list(int n, char **args);
@@ -44,6 +42,7 @@ void apply(int n, char **args);
 
 char * full_path(const char *file);
 int ends_with(const char *str, const char *suffix);
+void create_diff(char *path);
 
 
 #endif /* REVIEW_H_ */

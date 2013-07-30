@@ -31,14 +31,16 @@ void init()
     sprintf(path, "%s/.patches", home);
 }
 
-void fade()
-{
-    free(path);
-}
-
 void create(int n, char **args)
 {
-    printf("Create\n");
+    char *final;
+    if (!n) {
+        printf("Usage: review create <name>\n");
+        exit(1);
+    }
+
+    final = full_path(args[2]);
+    create_diff(final);
 }
 
 void rm(int n, char **args)

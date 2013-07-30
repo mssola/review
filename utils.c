@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <dirent.h>
 #include "review.h"
 
 
@@ -39,4 +40,43 @@ int ends_with(const char *str, const char *suffix)
     if (suffix_l > str_l)
         return 0;
     return !strncmp(str + str_l - suffix_l, suffix, suffix_l);
+}
+
+char * scm_command(const char *path)
+{
+    DIR *dir;
+    char *res;
+    char *scms[] = { "git", "hg", "svn" };
+    char aux[4];
+    int i;
+
+    aux[0] = '.';
+    for (i = 0; i < 3; i++) {
+        strcpy(aux + 1, scms[i]);
+        dir = opendir(aux);
+        if (dir) {
+            closedir(dir);
+            res = (char *) malloc(strlen(path) + 16);
+            sprintf(res, "%s diff > %s", scms[i], path);
+            return res;
+        }
+    }
+    return NULL;
+}
+
+void create_diff(char *path)
+{
+    char *scm;
+
+    if (!ends_with(path, ".patch")) {
+        path = (char *) realloc(path, strlen(path) + 6);
+        sprintf(path, "%s.patch", path);
+    }
+    scm = scm_command(path);
+    if (scm) {
+        system(scm);
+        free(scm);
+        printf("Created a patch here: %s\n", path);
+    }
+    free(path);
 }

@@ -43,7 +43,7 @@ int parse(int argc, char *argv[])
         if (!strcmp(argv[1], options[i].key)) {
             init();
             options[i].func(argc, argv);
-            fade();
+            free(path);
             return 1;
         }
     }
