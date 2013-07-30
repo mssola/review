@@ -39,17 +39,27 @@ void fade()
     free(path);
 }
 
-void create(char **args)
+void create(int n, char **args)
 {
     printf("Create\n");
 }
 
-void rm(char **args)
+void rm(int n, char **args)
 {
-    printf("Rm\n");
+    char *final;
+    if (!n) {
+        printf("Usage: review rm <name>\n");
+        exit(1);
+    }
+
+    final = (char *) malloc(strlen(path) + strlen(args[2]) + 1);
+    sprintf(final, "%s/%s", path, args[2]);
+    if(remove(final) != 0)
+        printf("Error deleting patch named `%s'\n", args[2]);
+    free(final);
 }
 
-void list(char **args)
+void list(int n, char **args)
 {
     DIR *dir;
     struct dirent *dp;
@@ -66,12 +76,12 @@ void list(char **args)
     closedir(dir);
 }
 
-void show(char **args)
+void show(int n, char **args)
 {
     printf("Show\n");
 }
 
-void apply(char **args)
+void apply(int n, char **args)
 {
     printf("Apply\n");
 }

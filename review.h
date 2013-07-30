@@ -28,11 +28,11 @@
 void init();
 void fade();
 
-void create(char **args);
-void rm(char **args);
-void list(char **args);
-void show(char **args);
-void apply(char **args);
+void create(int n, char **args);
+void rm(int n, char **args);
+void list(int n, char **args);
+void show(int n, char **args);
+void apply(int n, char **args);
 
 
 /*

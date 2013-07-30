@@ -22,16 +22,16 @@
 #include <string.h>
 #include "review.h"
 
-
 #define MAJOR 0
 #define MINOR 1
 
+
 struct opts_t {
     char *key;
-    void (*func)(char *argv[]);
+    void (*func)(int argc, char *argv[]);
 };
 
-int parse(char *argv[])
+int parse(int argc, char *argv[])
 {
     int i;
     struct opts_t options[] = {
@@ -42,7 +42,7 @@ int parse(char *argv[])
     for (i = 0; i < 5; i++) {
         if (!strcmp(argv[1], options[i].key)) {
             init();
-            options[i].func(argv);
+            options[i].func(argc, argv);
             fade();
             return 1;
         }
@@ -82,7 +82,7 @@ int main(int argc, char *argv[])
             help();
         usage(1);
     }
-    if (!parse(argv))
+    if (!parse(argc - 2, argv))
         usage(1);
     return 0;
 }
