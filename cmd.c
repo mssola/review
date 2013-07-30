@@ -20,6 +20,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <dirent.h>
 #include "cmd.h"
 
 
@@ -50,7 +51,19 @@ void rm(char **args)
 
 void list(char **args)
 {
-    printf("List: %s\n");
+    DIR *dir;
+    struct dirent *dp;
+
+    dir = opendir(path);
+    if (!dir) {
+        printf("The .patches directory does not exist.\n");
+        exit(1);
+    }
+    while ((dp = readdir(dir)) != NULL) {
+        if (dp->d_name[0] != '.' && ends_with(dp->d_name, ".patch"))
+            printf("%s\n", dp->d_name);
+    }
+    closedir(dir);
 }
 
 void show(char **args)

@@ -17,20 +17,17 @@
  */
 
 
-#ifndef CMD_H_
-#define CMD_H_
+#include <string.h>
+#include "cmd.h"
 
 
-void init();
-void fade();
-
-void create(char **args);
-void rm(char **args);
-void list(char **args);
-void show(char **args);
-void apply(char **args);
-
-int ends_with(const char *str, const char *suffix);
-
-
-#endif /* CMD_H_ */
+int ends_with(const char *str, const char *suffix)
+{
+    if (!str || !suffix)
+        return 0;
+    size_t str_l = strlen(str);
+    size_t suffix_l = strlen(suffix);
+    if (suffix_l > str_l)
+        return 0;
+    return !strncmp(str + str_l - suffix_l, suffix, suffix_l);
+}

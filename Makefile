@@ -1,5 +1,5 @@
 EXEC = review
-OBJ = main.o cmd.o
+OBJ = main.o cmd.o utils.o
 
 CC = gcc
 CFLAGS = -O3 -Wall
