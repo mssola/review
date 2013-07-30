@@ -17,9 +17,18 @@
  */
 
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "review.h"
 
+
+char * full_path(const char *file)
+{
+    char *final = (char *) malloc(strlen(path) + strlen(file) + 1);
+    sprintf(final, "%s/%s", path, file);
+    return final;
+}
 
 int ends_with(const char *str, const char *suffix)
 {

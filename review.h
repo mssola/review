@@ -21,6 +21,9 @@
 #define REVIEW_H_
 
 
+char *path;
+
+
 /*
  * cmd.c
  */
@@ -39,6 +42,7 @@ void apply(int n, char **args);
  * utils.c
  */
 
+char * full_path(const char *file);
 int ends_with(const char *str, const char *suffix);
 
 

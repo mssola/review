@@ -24,9 +24,6 @@
 #include "review.h"
 
 
-char *path;
-
-
 void init()
 {
     char *home = getenv("HOME");
@@ -52,8 +49,7 @@ void rm(int n, char **args)
         exit(1);
     }
 
-    final = (char *) malloc(strlen(path) + strlen(args[2]) + 1);
-    sprintf(final, "%s/%s", path, args[2]);
+    final = full_path(args[2]);
     if(remove(final) != 0)
         printf("Error deleting patch named `%s'\n", args[2]);
     free(final);
@@ -78,7 +74,24 @@ void list(int n, char **args)
 
 void show(int n, char **args)
 {
-    printf("Show\n");
+    char *cmd, *editor, *path;
+
+    if (!n) {
+        printf("Usage: review show <name>\n");
+        exit(1);
+    }
+    editor = getenv("EDITOR");
+    path = full_path(args[2]);
+    if (editor) {
+        cmd = (char *) malloc(strlen(editor) + strlen(path) + 1);
+        sprintf(cmd, "%s %s", editor, path);
+    } else {
+        cmd = (char *) malloc(strlen(path) + 3);
+        sprintf(cmd, "vi %s", path);
+    }
+    system(cmd);
+    free(path);
+    free(cmd);
 }
 
 void apply(int n, char **args)
