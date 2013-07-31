@@ -48,7 +48,7 @@ __list()
 # Main function for the completion of the review command.
 _review()
 {
-    local i c=1 command __git_dir
+    local c=1 command
     opts="create rm list show apply download"
 
     while [ $c -lt $COMP_CWORD ]; do
