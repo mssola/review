@@ -55,18 +55,18 @@ a specified name. Example:
 
 In order to install this utility type the following:
 
-    $ make install
+    $ ./install.pl
 
 This will install the review executable file in the /usr/bin/ directory.
-Make sure that the current user has the required permissions to do this.
-This repo also brings a completion file for the Bash shell. Some good steps
-to get completion working would be: (from the root of this repo)
+This installer makes use of the "sudo" command. This repo also brings a
+completion file for the Bash shell. This file will be automatically installed
+in:
 
-    $ cp misc/review_completion.sh $HOME/review_completion.sh
+    $HOME/.review_completion.sh
 
-And then add the following line in your .bashrc file:
+So to get completion working, add the following in your .bashrc file:
 
-    $ source $HOME/review_completion.sh
+    source $HOME/.review_completion.sh
 
 
 # Legal stuff

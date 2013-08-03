@@ -1,0 +1,64 @@
+#!/usr/bin/perl
+#
+# This file is part of Review.
+# Copyright (C) 2013 Miquel Sabaté Solà <mikisabate@gmail.com>
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+
+use strict;
+use lib 'lib';
+use Review;
+
+
+sub usage {
+    print "usage: review [-v | --version] [-h | --help] <command> <args>\n";
+}
+
+sub help {
+    usage();
+    print "\nThe review commands are:\n";
+    print("   create\tCreate a new patch.\n");
+    print("   rm\t\tRemove an existing patch.\n");
+    print("   list\t\tList all the available patches.\n");
+    print("   show\t\tShow a patch.\n");
+    print("   apply\tApply a patch to a path.\n");
+    print("   download\tDownload a patch and save it with the other patches.\n");
+    exit(0);
+}
+
+
+if (@ARGV < 1 || @ARGV > 3) {
+    usage();
+    exit(1);
+}
+
+my $cmd = $ARGV[0];
+if ($cmd =~ /^-/) {
+    if ($cmd eq '-v' || $cmd eq '--version') {
+        print "review version: " . $Review::VERSION . "\n";
+        exit(0);
+    } elsif ($cmd eq '-h' || $cmd eq '--help') {
+        help();
+    }
+    usage();
+    exit(1);
+}
+
+my @args = @ARGV[1..$#ARGV];
+my $r = Review->new();
+if (!$r->parse($cmd, \@args)) {
+    usage();
+    exit(1);
+}
