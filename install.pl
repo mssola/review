@@ -19,11 +19,13 @@
 
 
 # Path where the lib/Review.pm file should go.
-my $site_perl = '/usr/share/perl5/site_perl';
-my @res = grep($site_perl, @INC);
-if (!@res) {
-    print "Don't know where to install!\n";
-    exit(1);
+my $site_perl = '/usr/share/perl5';
+if (!grep($site_perl, @INC)) {
+    $site_perl .= '/site_perl';
+    if (!grep($site_perl, @INC)) {
+        print "Don't know where to install!\n";
+        exit(1);
+    }
 }
 
 # Install.
