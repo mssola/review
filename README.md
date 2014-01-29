@@ -71,7 +71,7 @@ So to get completion working, add the following in your .bashrc file:
 
 # Legal stuff
 
-Copyright (C) 2013 Miquel Sabaté Solà
+Copyright (C) 2013-2014 Miquel Sabaté Solà
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
