@@ -20,7 +20,7 @@ package Review;
 
 use strict;
 
-our $VERSION = '0.2';
+our $VERSION = '0.2.1';
 
 
 sub new
