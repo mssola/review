@@ -23,7 +23,8 @@ use strict;
 our $VERSION = '0.2';
 
 
-sub new {
+sub new
+{
     my ($klass) = @_;
     my $path = "$ENV{'HOME'}/.patches";
     bless { path => $path }, $klass;
@@ -143,5 +144,3 @@ sub generate_diff
         }
     }
 }
-
-1;
