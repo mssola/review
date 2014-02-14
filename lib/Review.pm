@@ -33,11 +33,9 @@ sub parse
 {
     my ($self, $cmd, $opts_r) = @_;
 
-    foreach my $method (qw( apply create download list rm show )) {
-        if ($cmd eq $method) {
-            $self->$method($opts_r);
-            return 1;
-        }
+    if (grep { $_ eq $cmd } qw( apply create download list rm show )) {
+        $self->$cmd($opts_r);
+        return 1;
     }
     print "Unknown command `$cmd'.\n";
     return 0;
