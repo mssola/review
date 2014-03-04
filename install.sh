@@ -19,20 +19,14 @@
 
 set -e
 
-# Force root privileges.
-if [[ $EUID -ne 0 ]]; then
-  echo "ERROR: Must be run with root privileges."
-  exit 1
-fi
-
 # Change this variable in order to choose another path.
 _path="/opt/review"
 
 # Install everything!
-mkdir -p $_path
-mkdir -p $HOME/.patches
-cp "review" "$_path/review"
-cp -r "lib/" "$_path/lib"
+sudo mkdir -p $_path
+sudo mkdir -p $HOME/.patches
+sudo cp "review" "$_path/review"
+sudo cp -r "lib/" "$_path/lib"
 cp "misc/review_completion.sh" "$HOME/.review_completion.sh"
 
 # Final message.
