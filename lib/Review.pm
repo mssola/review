@@ -1,4 +1,3 @@
-#
 # This file is part of Review.
 # Copyright (C) 2013-2014 Miquel Sabaté Solà <mikisabate@gmail.com>
 #
