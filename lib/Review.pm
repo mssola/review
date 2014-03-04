@@ -19,7 +19,7 @@ package Review;
 use strict;
 
 # Version string.
-our $VERSION = '0.3';
+our $VERSION = '0.3.1';
 
 
 # Public: Create a new Review instance.
