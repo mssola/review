@@ -1,7 +1,7 @@
-#!/usr/bin/perl
+#!/bin/bash
 #
 # This file is part of Review.
-# Copyright (C) 2013-2014 Miquel Sabaté Solà <mikisabate@gmail.com>
+# Copyright (C) 2014 Miquel Sabaté Solà <mikisabate@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -15,22 +15,32 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
 
 
-# Path where the lib/Review.pm file should go.
-my $site_perl = '/usr/share/perl5';
-if (!grep($site_perl, @INC)) {
-    $site_perl .= '/site_perl';
-    if (!grep($site_perl, @INC)) {
-        print "Don't know where to install!\n";
-        exit(1);
-    }
-}
+set -e
 
-# Install.
-system("sudo cp review /usr/bin/");
-system("sudo cp lib/Review.pm $site_perl");
-system("cp misc/review_completion.sh $ENV{HOME}/.review_completion.sh");
-print "Add the following line in your bashrc: ";
-print "source \$HOME/.review_completion.sh\n";
+# Force root privileges.
+if [[ $EUID -ne 0 ]]; then
+  echo "ERROR: Must be run with root privileges."
+  exit 1
+fi
+
+# Change this variable in order to choose another path.
+_path="/opt/review"
+
+# Install everything!
+mkdir -p $_path
+mkdir -p $HOME/.patches
+cp "review" "$_path/review"
+cp -r "lib/" "$_path/lib"
+cp "misc/review_completion.sh" "$HOME/.review_completion.sh"
+
+# Final message.
+cat <<HERE
+All the files have been properly installed. Nonetheless, you have to set
+the following lines in your .bashrc:
+
+  export PATH=\$PATH:/opt/review
+  source \$HOME/.review_completion.sh
+HERE
+
