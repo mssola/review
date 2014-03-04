@@ -17,7 +17,16 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 use strict;
-use lib 'lib';
+
+# Importing the lib this way, since it's not installed in a standard way.
+BEGIN {
+    use File::Spec::Functions qw(rel2abs catfile);
+    use File::Basename qw(dirname);
+
+    # Covert the script path to absolute and get its directory name
+    our $path = catfile(dirname(rel2abs($0)), 'lib');
+}
+use lib $main::path;
 use Review;
 
 
