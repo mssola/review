@@ -21,11 +21,15 @@ use lib 'lib';
 use Review;
 
 
-sub usage {
+# Just show the usage message.
+sub usage
+{
     print "usage: review [-v | --version] [-h | --help] <command> <args>\n";
 }
 
-sub help {
+# Show the usage message and the list of commands.
+sub help
+{
     usage();
     print "\nThe review commands are:\n";
     print("   create\tCreate a new patch.\n");
@@ -37,6 +41,9 @@ sub help {
     exit(0);
 }
 
+
+##
+# Main script.
 
 if (@ARGV < 1 || @ARGV > 3) {
     usage();
