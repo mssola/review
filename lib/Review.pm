@@ -154,10 +154,16 @@ sub generate_diff
 {
     my ($self, $path) = @_;
     my @scms = qw( git hg svn );
+    my %opts = ('git', 'HEAD');
 
     foreach my $i (@scms) {
         if (-d ".$i") {
-            system("$i diff > $$path");
+            my $cmd = "$i diff";
+            if (exists $opts{$i}) {
+                $cmd .= " $opts{$i}";
+            }
+
+            system("$cmd > $$path");
             last;
         }
     }
