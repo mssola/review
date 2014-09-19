@@ -15,7 +15,8 @@ After doing some hard work, you just type:
 
 By entering this command, now you have the awesome.patch file inside the
 directory of patches. Note that the ".patch" has been added automatically.
-All the other commands will require this extension.
+The extension is irrelevant for the other commands since ".patch" is the
+assumed extension.
 
 ## Remove
 
