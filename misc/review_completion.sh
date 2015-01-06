@@ -3,7 +3,7 @@
 # git completion file. This file is available in here:
 # https://git.kernel.org/cgit/git/git.git/tree/contrib/completion/git-completion.bash
 #
-# Copyright (C) 2013 Miquel Sabaté Solà <mikisabate@gmail.com>
+# Copyright (C) 2013-2015 Miquel Sabaté Solà <mikisabate@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
